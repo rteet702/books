@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books | Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h2 class="text-center">New Author</h2>
+                <form action="/authors/submit" method="post">
+                    <!-- title -->
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" name="name" id="name" class="form-control mb-3">
+                    <!-- submit  -->
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col">
+                <h2 class="text-center">All Authors</h2>
+                <ul>
+                    {% for author in all_authors %}
+                    <li><a href="/authors/{{ author.id }}">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <p><a href="/books">Add Book</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
